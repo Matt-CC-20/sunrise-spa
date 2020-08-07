@@ -37,40 +37,23 @@ export default {
   apollo: {
     product: {
       query: gql`
-        query ProductDetailsSection($locale: Locale!, $sku: String!, $preview: Boolean!) {
+        query ProductDetailsSection( $sku: String!, $preview: Boolean!) {
           product(sku: $sku) {
             id
             masterData {
               current @skip(if: $preview) {
                 variant(sku: $sku) {
                   attributes {
-                    ...on mainProductType {
-                      designer {
+                    ...on simpleProductType {
+                      Colour {
                         label
                         key
                         name
                       }
-                      colorFreeDefinition {
-                        value(locale: $locale)
-                        name
-                      }
-                      size {
-                        value
-                        name
-                      }
-                      style {
-                        key
+                      Size {
                         label
-                        name
-                      }
-                      gender {
                         key
-                        label
                         name
-                      }
-                      articleNumberManufacturer {
-                        name
-                        value
                       }
                     }
                   }
@@ -80,33 +63,16 @@ export default {
               staged @include(if: $preview) {
                 variant(sku: $sku) {
                   attributes {
-                    ...on mainProductType {
-                      designer {
+                    ...on simpleProductType {
+                      Colour {
                         label
                         key
                         name
                       }
-                      colorFreeDefinition {
-                        value(locale: $locale)
-                        name
-                      }
-                      size {
-                        value
-                        name
-                      }
-                      style {
-                        key
+                      Size {
                         label
-                        name
-                      }
-                      gender {
                         key
-                        label
                         name
-                      }
-                      articleNumberManufacturer {
-                        name
-                        value
                       }
                     }
                   }
@@ -146,7 +112,7 @@ export default {
       variables() {
         return {
           locale: this.$i18n.locale,
-          type: 'main',
+          type: 'simple',
         };
       },
     },

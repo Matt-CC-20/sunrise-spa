@@ -55,7 +55,7 @@ export default {
   apollo: {
     product: {
       query: gql`
-        query VariantSelector($locale: Locale!, $sku: String!) {
+        query VariantSelector( $sku: String!) {
           product(sku: $sku) {
             id
             masterData {
@@ -63,14 +63,15 @@ export default {
                 allVariants {
                   sku
                   attributes {
-                    ...on mainProductType {
-                      color {
+                    ...on simpleProductType {
+                      Colour {
+                        label
                         key
-                        label(locale: $locale)
                         name
                       }
-                      size {
-                        value
+                      Size {
+                        label
+                        key
                         name
                       }
                     }
@@ -78,16 +79,17 @@ export default {
                 }
                 variant(sku: $sku) {
                   attributes {
-                    ...on mainProductType {
-                      color {
+                    ...on simpleProductType {
+                      Colour {
+                        label
                         key
-                        label(locale: $locale)
                         name
                       }
-                      size {
-                        value
+                      Size {
+                        label
+                        key
                         name
-                      }               
+                      }           
                     }
                   }
                 }
@@ -125,7 +127,7 @@ export default {
       variables() {
         return {
           locale: this.$i18n.locale,
-          type: 'main',
+          type: 'simple',
         };
       },
     },
