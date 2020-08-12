@@ -1,5 +1,6 @@
   <div class="col-xs-12 col-sm-6 col-md-4">
-    <router-link :to="productRoute(currentProduct.slug, matchingVariant.sku)">
+    <router-link :to="productRoute(currentProduct.slug, matchingVariant.sku, product.id)">
+      
       <div data-test="product-thumbnail"
            class="shop-item">
         <div v-if="hasPrice && hasDiscount"

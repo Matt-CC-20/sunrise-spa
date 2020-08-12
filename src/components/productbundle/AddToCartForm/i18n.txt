@@ -1,0 +1,6 @@
+de:
+  addToCart: "In den Warenkorb"
+  embroidery: "Embroidery"
+en:
+  addToCart: "Add to Bag"
+  embroidery: "Embroidery"

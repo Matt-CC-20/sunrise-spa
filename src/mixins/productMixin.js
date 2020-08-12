@@ -17,9 +17,13 @@ export default {
       return null;
     },
 
-    productRoute(productSlug, sku) {
+    productRoute(productSlug, sku, productId) {
+      let typeName = 'product';
+      if (productId === '382fd2b5-2b41-4b10-bbfd-f25da5278de7') {
+        typeName = 'bundle';
+      }
       return {
-        name: 'product',
+        name: typeName,
         params: { productSlug, sku },
       };
     },

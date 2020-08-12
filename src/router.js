@@ -16,6 +16,7 @@ import ResetPassword from './components/login/ResetPassword/index.vue';
 import PageUserAccount from './components/useraccount/PageUserAccount/index.vue';
 import PageNotFound from './components/common/PageNotFound/index.vue';
 import PageProductDetail from './components/productdetail/PageProductDetail/index.vue';
+import PageBundleDetail from './components/productbundle/PageProductDetail/index.vue';
 import PageCartDetail from './components/cartdetail/PageCartDetail/index.vue';
 import TabPersonalDetails from './components/useraccount/userdetail/TabPersonalDetails/index.vue';
 import TabOrderList from './components/useraccount/myorders/TabOrderList/index.vue';
@@ -143,6 +144,20 @@ const router = new Router({
           name: 'product',
           components: {
             default: PageProductDetail,
+            header: TheHeader,
+            footer: TheFooter,
+          },
+          props: {
+            default: true,
+            header: false,
+            footer: false,
+          },
+        },
+        {
+          path: 'bundle/:productSlug/:sku',
+          name: 'bundle',
+          components: {
+            default: PageBundleDetail,
             header: TheHeader,
             footer: TheFooter,
           },

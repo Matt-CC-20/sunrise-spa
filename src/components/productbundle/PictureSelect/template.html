@@ -1,0 +1,23 @@
+<div>
+  <!--<select v-model="selectedValue" class="select-product-detail" :data-test="`attribute-select-${this.name}`">
+    <option v-for="value in distinctValues" data-test="attribute-select-option" :key="value">
+      {{value}}
+
+    </option>
+  </select>-->
+
+
+  <v-select style="width:200px" v-model="selectedValue" :options="distinctList" label="title">
+
+    
+
+    <template slot="option" slot-scope="option">
+      <PictureSelectOption :sku="option.title" />
+      <!--<div>
+        <img :src="option.cardImage" />
+        {{ option.title }}
+      </div>-->
+    </template>
+
+  </v-select>
+</div>
